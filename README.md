@@ -1,5 +1,5 @@
 # Algorithm-in-Python
-Leetcode solutions in Python 
-and other algorithms
+Mostly Leetcode solutions in Python
+and some other algorithms
 
 'Jun 3' Test Commit'
