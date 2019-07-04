@@ -1,3 +1,5 @@
+
+/* Write your MySQL query statement below */
 SELECT DISTINCT
     l1.Num AS ConsecutiveNums
 FROM
@@ -10,3 +12,12 @@ WHERE
     AND l1.Num = l2.Num
     AND l2.Num = l3.Num
 ;
+
+/* Faster solution */
+select distinct a.num as ConsecutiveNums
+from (select num, (case when @record = num then @count := @count + 1
+                          when @record := num then @count := 1
+                    end) as count_result
+      from Logs, (select @record := null, @count := 0) b
+      ) a
+where a.count_result >= 3;
