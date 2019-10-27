@@ -20,7 +20,7 @@ class Solution:
             return ret
         
         while(len(stack)>0):
-            node = stack.pop()
+            node = stack.pop() # node.val
             ret.append(node.val)
             if(node.right != None):
                 stack.append(node.right)
@@ -36,7 +36,7 @@ class Solution:
     """
     def preorderTraversal(self, root):
         self.results = []
-        self.traverse(root)
+        self.traverse(root) # recursion
         return self.results
         
     def traverse(self, root):
