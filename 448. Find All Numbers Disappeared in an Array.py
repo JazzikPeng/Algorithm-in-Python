@@ -5,9 +5,11 @@ class Solution(object):
         :rtype: List[int]
         """
         for i in range(len(nums)):
-            if nums[abs(nums[i])-1] > 0:                           nums[abs(nums[i])-1]*=-1
-        return [i+i for i in range(len(nums)) if nums[i] > 0]
+            if nums[abs(nums[i])-1] > 0:                           
+                nums[abs(nums[i])-1]*=-1
+        return [i+1 for i in range(len(nums)) if nums[i] > 0]
         
+
 
 # Set solution
 class Solution(object):

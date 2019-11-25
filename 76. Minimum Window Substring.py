@@ -85,7 +85,44 @@ class Solution:
                 count += 1
         return s[l: r] if r != float('inf') else ''
 
-
+from collections import *
+class Solution:
+    def minWindow(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: str
+        """
+        if not t or not s:
+            return ''
+        dic = Counter(t) # Dictionary of results
+        unique_char = len(dic) 
+        l, r = 0,0 
+        done = 0
+        min_win = float('inf')
+        
+        word_counts = {}
+        
+        while r < len(s):
+            c = s[r]
+            word_counts[c] = word_counts.get(c, 0) + 1
+            if c in dic and word_counts[c] == dic[c]:
+                done += 1
+            
+            while l < r and done == unique_char:
+                c = s[l]
+                
+                if r - l + 1 < min_win:
+                    min_win = r - l + 1
+                word_counts[c] -= 1
+                if c in dic and word_counts[c] < dic[c]:
+                    done -= 1
+                l += 1
+                
+            r += 1
+        return "" if min_win == float('inf') else s[l:r+1]
+            
+        
 s = Solution()
 S = "aa"
 T = "aa"

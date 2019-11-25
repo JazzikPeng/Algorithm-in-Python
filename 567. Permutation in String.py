@@ -25,6 +25,30 @@ class Solution:
         else:
             return False
 
+from collections import *
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        # Sliding window solution
+        dic = Counter(s1)
+        win = {}
+        if len(s1) > len(s2):
+            return False
+        for s in s2[:len(s1)]:
+                win[s] = win.get(s, 0) + 1
+
+        for i in range(len(s1), len(s2)):
+            if win == dic:
+                return True
+            win[s2[i - len(s1)]] -=  1
+            if win[s2[i - len(s1)]]<= 0:
+                win.pop(s2[i - len(s1)])
+            win[s2[i]] = win.get(s2[i], 0) + 1
+        
+        if win == dic:
+            return True
+        return False
+
+
 a = "ab"
 b = "eidbaoo"
 
