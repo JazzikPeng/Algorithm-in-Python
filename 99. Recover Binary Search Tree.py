@@ -114,3 +114,29 @@ for i in range(1,len(in_traversal)):
 
 print(first, second)
 
+
+# Recursive Method
+class Solution(object):
+
+    def inorder(self, root):
+        if not root:
+            return
+        self.inorder(root.left) 
+        if root.val < self.pre_node.val:
+            if not self.error_node1:
+                self.error_node1 = self.pre_node
+            if self.error_node1:
+                self.error_node2 = root
+        self.pre_node = root
+        self.inorder(root.right)
+        
+        
+    def recoverTree(self, root):
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        self.error_node1, self.error_node2 = None, None
+        self.pre_node = TreeNode(float('-Inf'))
+        self.inorder(root)
+        self.error_node1.val, self.error_node2.val = self.error_node2.val, self.error_node1.val
+        

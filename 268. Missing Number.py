@@ -26,5 +26,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # bit operation
+        re = len(nums)
+        for idx, i in enumerate(nums):
+            re = idx ^ i ^ re
+            
+        return re
 
-print(1)
